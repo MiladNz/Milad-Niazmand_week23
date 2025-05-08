@@ -1,6 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import loginSchema from "../schema/loginSchema";
+import { useMutation } from "@tanstack/react-query";
+import { loginUser } from "../services/authService";
 
 function LoginForm() {
   const {
@@ -9,7 +11,23 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) });
 
-  const loginHandler = () => {};
+  const mutation = useMutation({
+    mutationFn: loginUser,
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      console.log("Login success", data);
+    },
+    onError: (error) => {
+      console.error(
+        "Login Error:",
+        error.response?.data?.message || "مشکلی پیش آمد"
+      );
+    },
+  });
+
+  const loginHandler = (inputs) => {
+    mutation.mutate(inputs);
+  };
 
   return (
     <div>
