@@ -6,7 +6,7 @@ function LoginPage() {
     <div className={styles.mainContainer}>
       <div className={styles.container}>
         <img src="/Union.png" alt="logo" />
-        <h2>فرم ورود</h2>
+        <h2 style={{ marginBottom: "6rem" }}>فرم ورود</h2>
         <LoginForm />
       </div>
     </div>

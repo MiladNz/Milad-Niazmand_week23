@@ -39,7 +39,10 @@ function LoginForm() {
       {errors.username && <p>{errors.username.message}</p>}
       <input type="password" {...register("password")} placeholder="رمز عبور" />
       {errors.password && <p>{errors.password.message}</p>}
-      <button type="submit" disabled={mutation.isPending}>
+      <button
+        type="submit"
+        disabled={mutation.isPending}
+        style={{ marginBottom: "2rem", marginTop: "2rem" }}>
         {mutation.isPending ? "در حال ورود ..." : "ورود"}
       </button>
       <p>

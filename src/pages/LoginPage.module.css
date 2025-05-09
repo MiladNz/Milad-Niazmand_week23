@@ -7,7 +7,7 @@
 
 .container {
   width: 470px;
-  height: 523px;
+  height: 570px;
   display: flex;
   background-color: #fff;
   flex-direction: column;
@@ -24,5 +24,5 @@
   color: #282828;
   font-size: 2.4rem;
   font-weight: 600;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
 }
