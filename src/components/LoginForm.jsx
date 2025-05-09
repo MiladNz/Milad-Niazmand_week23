@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../services/authService";
 import { toast } from "react-toastify";
 import styles from "./LoginForm.module.css";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const {
@@ -41,6 +42,11 @@ function LoginForm() {
       <button type="submit" disabled={mutation.isPending}>
         {mutation.isPending ? "در حال ورود ..." : "ورود"}
       </button>
+      <p>
+        <Link to="/register" className={styles.registerLink}>
+          ایجاد حساب کاربری
+        </Link>
+      </p>
     </form>
   );
 }
