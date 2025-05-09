@@ -17,10 +17,12 @@ function LoginForm() {
     mutationFn: loginUser,
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
-      toast.success("ورود با موفقیت انجام شد");
+      toast.success("ورود با موفقیت انجام شد", { className: styles.toastify });
     },
     onError: () => {
-      toast.error("ورود ناموفق بود . دوباره تلاش کنید");
+      toast.error("ورود ناموفق بود . دوباره تلاش کنید", {
+        className: styles.toastify,
+      });
     },
   });
 

@@ -9,7 +9,7 @@ function Toast() {
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick={false}
-        rtl={false}
+        rtl={true}
         pauseOnFocusLoss
         draggable
         pauseOnHover
