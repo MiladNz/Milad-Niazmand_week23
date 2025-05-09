@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import loginSchema from "../schema/loginSchema";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../services/authService";
+import { toast } from "react-toastify";
 
 function LoginForm() {
   const {
@@ -15,13 +16,10 @@ function LoginForm() {
     mutationFn: loginUser,
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
-      console.log("Login success", data);
+      toast.success("ورود با موفقیت انجام شد");
     },
-    onError: (error) => {
-      console.error(
-        "Login Error:",
-        error.response?.data?.message || "مشکلی پیش آمد"
-      );
+    onError: () => {
+      toast.error("ورود ناموفق بود . دوباره تلاش کنید");
     },
   });
 
@@ -36,7 +34,9 @@ function LoginForm() {
         {errors.username && <p>{errors.username.message}</p>}
         <input type="text" {...register("password")} placeholder="رمز عبور" />
         {errors.password && <p>{errors.password.message}</p>}
-        <button type="submit">ورود</button>
+        <button type="submit" disabled={mutation.isPending}>
+          {mutation.isPending ? "در حال ورود ..." : "ورود"}
+        </button>
       </form>
     </div>
   );
