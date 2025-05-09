@@ -1,0 +1,35 @@
+.formContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.formContainer input {
+  padding: 1.4rem 1.3rem;
+  border-radius: 1.5rem;
+  border: none;
+  background-color: #f2f2f2;
+  font-family: inherit;
+  font-size: 1.6rem;
+}
+
+.formContainer button {
+  padding: 1.2rem;
+  font-family: inherit;
+  font-size: 2rem;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 1.5rem;
+  outline: none;
+  border: none;
+  background-color: #55a3f0;
+  cursor: pointer;
+}
+.formContainer button:hover {
+  color: #55a3f0;
+  background-color: #fff;
+  border: 2px solid #55a3f0;
+  transition: all 0.3s ease-in-out;
+}

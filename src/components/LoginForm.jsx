@@ -4,6 +4,7 @@ import loginSchema from "../schema/loginSchema";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../services/authService";
 import { toast } from "react-toastify";
+import styles from "./LoginForm.module.css";
 
 function LoginForm() {
   const {
@@ -28,17 +29,17 @@ function LoginForm() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(loginHandler)}>
-        <input type="text" {...register("username")} placeholder="نام کاربری" />
-        {errors.username && <p>{errors.username.message}</p>}
-        <input type="text" {...register("password")} placeholder="رمز عبور" />
-        {errors.password && <p>{errors.password.message}</p>}
-        <button type="submit" disabled={mutation.isPending}>
-          {mutation.isPending ? "در حال ورود ..." : "ورود"}
-        </button>
-      </form>
-    </div>
+    <form
+      className={styles.formContainer}
+      onSubmit={handleSubmit(loginHandler)}>
+      <input type="text" {...register("username")} placeholder="نام کاربری" />
+      {errors.username && <p>{errors.username.message}</p>}
+      <input type="password" {...register("password")} placeholder="رمز عبور" />
+      {errors.password && <p>{errors.password.message}</p>}
+      <button type="submit" disabled={mutation.isPending}>
+        {mutation.isPending ? "در حال ورود ..." : "ورود"}
+      </button>
+    </form>
   );
 }
 

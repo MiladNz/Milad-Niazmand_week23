@@ -1,0 +1,29 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.container {
+  width: 470px;
+  height: 523px;
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  /* justify-content: center; */
+  padding: 5rem 3.5rem 2rem 3.5rem;
+  align-items: center;
+  border-radius: 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.container img {
+  width: 64px;
+  margin-bottom: 2rem;
+}
+.container h2 {
+  color: #282828;
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 6rem;
+}
