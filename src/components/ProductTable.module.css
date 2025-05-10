@@ -2,6 +2,7 @@
   width: 1140px;
   margin: 0 auto;
   padding: 1rem;
+  color: #282828;
 }
 
 .header {
@@ -34,4 +35,56 @@
   font-family: inherit;
   font-size: 1.6rem;
   border-radius: 10px;
+}
+
+.table {
+  margin-top: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #efefef;
+  border-radius: 3rem;
+}
+
+.table tbody {
+  display: block;
+  height: 500px;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table thead {
+  margin-bottom: 5px;
+  background-color: #efefef;
+  font-size: 1.4rem;
+}
+
+.table thead th {
+  padding: 2rem 4rem;
+  text-align: right;
+}
+
+.table thead th:first-of-type {
+  border-top-right-radius: 3rem;
+}
+
+.table thead th:last-of-type {
+  border-top-left-radius: 3rem;
+}
+
+.table tbody td {
+  height: 50px;
+  border-bottom: 1px solid #e2ded3;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: right;
+  padding: 1rem 4rem;
+}
+
+.table tbody td:last-of-type {
 }

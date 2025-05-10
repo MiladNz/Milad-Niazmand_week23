@@ -22,7 +22,7 @@ function ProductTable() {
         </div>
         <button>افزودن محصول</button>
       </div>
-      <table>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>نام کالا</th>
@@ -32,7 +32,29 @@ function ProductTable() {
             <th>عملیات</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <tr>
+            <td>aaa</td>
+            <td>222</td>
+            <td>443000</td>
+            <td>324234234324</td>
+            <td>+</td>
+          </tr>
+          <tr>
+            <td>aaa</td>
+            <td>222</td>
+            <td>443000</td>
+            <td>324234234324</td>
+            <td>+</td>
+          </tr>
+          <tr>
+            <td>aaa</td>
+            <td>222</td>
+            <td>443000</td>
+            <td>324234234324</td>
+            <td>+</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
