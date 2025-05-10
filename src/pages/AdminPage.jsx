@@ -1,7 +1,9 @@
+import Searchbar from "../components/Searchbar";
+
 function AdminPage() {
   return (
     <div>
-      <h1>AdminPage</h1>
+      <Searchbar />
     </div>
   );
 }

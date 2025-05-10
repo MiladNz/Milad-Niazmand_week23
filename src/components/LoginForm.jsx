@@ -5,7 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../services/authService";
 import { toast } from "react-toastify";
 import styles from "./LoginForm.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const {
@@ -14,11 +14,16 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) });
 
+  const navigate = useNavigate();
+
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
       toast.success("ورود با موفقیت انجام شد", { className: styles.toastify });
+      setTimeout(() => {
+        navigate("/admin");
+      }, 2500);
     },
     onError: () => {
       toast.error("ورود ناموفق بود . دوباره تلاش کنید", {
