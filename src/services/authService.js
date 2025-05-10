@@ -10,4 +10,13 @@ const registerUser = async (data) => {
   return response.data;
 };
 
-export { loginUser, registerUser };
+const getProducts = async () => {
+  const response = await dataApi.get("/products", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response.data;
+};
+
+export { loginUser, registerUser, getProducts };
