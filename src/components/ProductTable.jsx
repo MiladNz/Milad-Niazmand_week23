@@ -33,27 +33,15 @@ function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>aaa</td>
-            <td>222</td>
-            <td>443000</td>
-            <td>324234234324</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>aaa</td>
-            <td>222</td>
-            <td>443000</td>
-            <td>324234234324</td>
-            <td>+</td>
-          </tr>
-          <tr>
-            <td>aaa</td>
-            <td>222</td>
-            <td>443000</td>
-            <td>324234234324</td>
-            <td>+</td>
-          </tr>
+          {data.data.map((product) => (
+            <tr key={product.id}>
+              <td>{product.name}</td>
+              <td>{product.quantity}</td>
+              <td>{product.price}</td>
+              <td>{product.id.split("-").pop()}</td>
+              <td>+</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
