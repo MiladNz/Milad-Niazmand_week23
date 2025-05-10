@@ -22,3 +22,10 @@ body {
   min-height: 100vh;
   background-color: #f5f3f391;
 }
+
+.Toastify__toast {
+  font-size: 1.5rem !important;
+  font-family: inherit;
+  color: #2c2c2c;
+  border-radius: 8px;
+}

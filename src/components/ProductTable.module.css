@@ -88,12 +88,15 @@
   align-items: center;
   gap: 10px;
 }
+
 .editBtn {
   color: #4ade80;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .delBtn {
   color: #f43f5e;
   font-size: 20px;
+  cursor: pointer;
 }

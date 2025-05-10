@@ -19,4 +19,13 @@ const getProducts = async () => {
   return response.data;
 };
 
-export { loginUser, registerUser, getProducts };
+const deleteProduct = async (id) => {
+  const response = await dataApi.delete(`/products/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response.data;
+};
+
+export { loginUser, registerUser, getProducts, deleteProduct };

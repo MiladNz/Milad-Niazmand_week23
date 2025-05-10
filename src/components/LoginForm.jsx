@@ -20,15 +20,13 @@ function LoginForm() {
     mutationFn: loginUser,
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
-      toast.success("ورود با موفقیت انجام شد", { className: styles.toastify });
+      toast.success("ورود با موفقیت انجام شد");
       setTimeout(() => {
         navigate("/admin");
       }, 2500);
     },
     onError: () => {
-      toast.error("ورود ناموفق بود . دوباره تلاش کنید", {
-        className: styles.toastify,
-      });
+      toast.error("ورود ناموفق بود . دوباره تلاش کنید");
     },
   });
 

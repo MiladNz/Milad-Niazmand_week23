@@ -34,12 +34,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-.toastify {
+/* .toastify {
   font-size: 1.5rem !important;
   font-family: inherit;
   color: #2c2c2c;
   border-radius: 8px;
-}
+} */
 
 .registerLink {
   text-decoration: none;
