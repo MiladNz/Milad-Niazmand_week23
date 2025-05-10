@@ -3,6 +3,7 @@ import Searchbar from "../components/Searchbar";
 
 function AdminPage() {
   return (
+    // ! create style file
     <div style={{ maxWidth: "1140px" }}>
       <Searchbar />
       <ProductTable />

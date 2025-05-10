@@ -81,3 +81,19 @@
   padding: 1rem 4rem;
   background-color: #fff;
 }
+
+.btns {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  gap: 10px;
+}
+.editBtn {
+  color: #4ade80;
+  font-size: 20px;
+}
+
+.delBtn {
+  color: #f43f5e;
+  font-size: 20px;
+}

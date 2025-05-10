@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../services/authService";
 import styles from "./ProductTable.module.css";
 import { AiOutlineProduct } from "react-icons/ai";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 function ProductTable() {
   const { data, isLoading, isError, error } = useQuery({
@@ -39,7 +40,10 @@ function ProductTable() {
               <td>{product.quantity}</td>
               <td>{product.price}</td>
               <td>{product.id.split("-").pop()}</td>
-              <td>+</td>
+              <td className={styles.btns}>
+                <FiEdit className={styles.editBtn} />
+                <FiTrash2 className={styles.delBtn} />
+              </td>
             </tr>
           ))}
         </tbody>
