@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const newProductSchema = yup.object().shape({
-  productName: yup.string().required("نام کالا الزامی است"),
+  name: yup.string().required("نام کالا الزامی است"),
   price: yup
     .number()
     .typeError("قیمت باید یک عدد باشد")

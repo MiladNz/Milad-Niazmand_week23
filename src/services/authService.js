@@ -29,11 +29,10 @@ const deleteProduct = async (id) => {
 };
 
 const addProduct = async (data) => {
-  const response = await dataApi.post("/products", {
+  const response = await dataApi.post("/products", data, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
-    data,
   });
   return response.data;
 };

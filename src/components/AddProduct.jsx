@@ -46,10 +46,10 @@ function AddProduct({ setShowAddModal }) {
           <input
             type="text"
             id="name"
-            {...register("productName")}
+            {...register("name")}
             placeholder="نام کالا"
           />
-          {errors.productName && <p>{errors.productName.message}</p>}
+          {errors.name && <p>{errors.name.message}</p>}
           <label htmlFor="quantity">تعداد موجودی</label>
           <input
             type="number"
