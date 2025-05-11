@@ -41,7 +41,9 @@ function AddProduct({ setShowAddModal }) {
     <div className={styles.modalBackdrop}>
       <div className={styles.modal}>
         <h2>ایجاد محصول جدید</h2>
-        <form onSubmit={handleSubmit(addProductHandler)}>
+        <form
+          onSubmit={handleSubmit(addProductHandler)}
+          className={styles.form}>
           <label htmlFor="name">نام کالا</label>
           <input
             type="text"
@@ -49,7 +51,7 @@ function AddProduct({ setShowAddModal }) {
             {...register("name")}
             placeholder="نام کالا"
           />
-          {errors.name && <p>{errors.name.message}</p>}
+          <p className={styles.error}>{errors.name?.message || " "}</p>
           <label htmlFor="quantity">تعداد موجودی</label>
           <input
             type="number"
@@ -57,7 +59,7 @@ function AddProduct({ setShowAddModal }) {
             {...register("quantity")}
             placeholder="تعداد"
           />
-          {errors.quantity && <p>{errors.quantity.message}</p>}
+          <p className={styles.error}>{errors.quantity?.message || " "}</p>
           <label htmlFor="price">قیمت</label>
           <input
             type="number"
@@ -65,11 +67,13 @@ function AddProduct({ setShowAddModal }) {
             {...register("price")}
             placeholder="قیمت"
           />
-          {errors.price && <p>{errors.price.message}</p>}
-          <button type="submit">ایجاد</button>
-          <button type="button" onClick={cancelHandler}>
-            لغو
-          </button>
+          <p className={styles.error}>{errors.price?.message || " "}</p>
+          <div className={styles.buttons}>
+            <button type="submit">ایجاد</button>
+            <button type="button" onClick={cancelHandler}>
+              انصراف
+            </button>
+          </div>
         </form>
       </div>
     </div>

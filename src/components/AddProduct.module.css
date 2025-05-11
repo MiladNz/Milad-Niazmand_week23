@@ -14,12 +14,61 @@
 .modal {
   background: #fff;
   border-radius: 30px;
+  padding: 2rem 3rem;
+  width: 430px;
+}
+
+.modal h2 {
+  font-size: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2.5rem;
   text-align: center;
-  width: 400px;
-  height: 300px;
+}
+
+.form input {
+  width: 100%;
+  padding: 1.2rem;
+  margin: 1rem auto;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+.form label {
+  text-align: right;
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.buttons {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  gap: 15px;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.form button {
+  padding: 1rem 5rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.form button:nth-child(1) {
+  color: #fff;
+  background-color: #55a3f0;
+}
+
+.error {
+  min-height: 1.6rem;
+  color: #f43f5e;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: left;
 }

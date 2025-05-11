@@ -26,7 +26,7 @@
   font-size: 2.4rem;
 }
 
-.header button {
+.header > button {
   padding: 1rem 1.5rem;
   background-color: #55a3f0;
   color: #fff;
