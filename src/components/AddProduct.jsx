@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import styles from "./AddProduct.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import newProductSchema from "../schema/newProductSchema";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { addProduct } from "../services/authService";
 import { v4 as uuidv4 } from "uuid";
@@ -14,10 +14,13 @@ function AddProduct({ setShowAddModal }) {
     formState: { errors },
   } = useForm({ resolver: yupResolver(newProductSchema) });
 
+  const queryClient = useQueryClient();
+
   const addProductMutation = useMutation({
     mutationFn: addProduct,
     onSuccess: () => {
       toast.success("کالای جدید با موفقیت اضافه شد");
+      queryClient.invalidateQueries(["products"]);
       setShowAddModal(false);
     },
     onError: () => {
