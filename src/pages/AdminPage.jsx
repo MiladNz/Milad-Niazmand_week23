@@ -8,7 +8,6 @@ function AdminPage() {
     <div style={{ maxWidth: "1140px" }}>
       <Searchbar />
       <ProductTable />
-      <Modal />
     </div>
   );
 }

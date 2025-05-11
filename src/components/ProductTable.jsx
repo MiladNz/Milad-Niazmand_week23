@@ -4,8 +4,13 @@ import styles from "./ProductTable.module.css";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
+import { useState } from "react";
+import Modal from "./Modal";
 
 function ProductTable() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["products"],
     queryFn: getProducts,
@@ -24,8 +29,14 @@ function ProductTable() {
     },
   });
 
-  const deleteHandler = (id) => {
-    return deleteMutation.mutate(id);
+  const confirmHandler = () => {
+    deleteMutation.mutate(selectedProduct);
+    setShowModal(false);
+  };
+
+  const cancelHandler = () => {
+    setShowModal(false);
+    setSelectedProduct(null);
   };
 
   if (isLoading) return <p>در حال بارگذاری ...</p>;
@@ -63,13 +74,20 @@ function ProductTable() {
                 <FiEdit className={styles.editBtn} />
                 <FiTrash2
                   className={styles.delBtn}
-                  onClick={() => deleteHandler(product.id)}
+                  onClick={() => {
+                    setSelectedProduct(product.id);
+                    setShowModal(true);
+                    // deleteHandler(product.id);
+                  }}
                 />
               </td>
             </tr>
           ))}
         </tbody>
       </table>
+      {showModal && (
+        <Modal confirmHandler={confirmHandler} cancelHandler={cancelHandler} />
+      )}
     </div>
   );
 }
