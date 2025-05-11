@@ -1,52 +1,54 @@
 import { useForm } from "react-hook-form";
-import styles from "./AddProduct.module.css";
+import styles from "./ProductForm.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import newProductSchema from "../schema/newProductSchema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { addProduct } from "../services/authService";
+import { addProduct, updateProduct } from "../services/authService";
 import { v4 as uuidv4 } from "uuid";
 
-function AddProduct({ setShowAddModal }) {
+function ProductForm({ onClose, mode = "add", initialData = null }) {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(newProductSchema) });
+  } = useForm({
+    resolver: yupResolver(newProductSchema),
+    defaultValues: initialData || {
+      name: "",
+      quantity: "",
+      price: "",
+    },
+  });
 
   const queryClient = useQueryClient();
 
-  const addProductMutation = useMutation({
-    mutationFn: addProduct,
+  const productMutation = useMutation({
+    mutationFn: mode === "edit" ? updateProduct : addProduct,
     onSuccess: () => {
-      toast.success("کالای جدید با موفقیت اضافه شد");
+      toast.success(
+        mode === "edit"
+          ? "محصول با موفقیت ویرایش شد"
+          : "محصول جدید با موفقیت اضافه شد"
+      );
       queryClient.invalidateQueries(["products"]);
-      setShowAddModal(false);
+      onClose();
     },
     onError: () => {
       toast.error("خطایی رخ داد");
     },
   });
 
-  const addProductHandler = (data) => {
-    const productWithId = {
-      id: uuidv4(),
-      ...data,
-    };
-    addProductMutation.mutate(productWithId);
-  };
-
-  const cancelHandler = () => {
-    setShowAddModal(false);
+  const submitHandler = (data) => {
+    const product = mode === "add" ? { ...data, id: uuidv4() } : data;
+    productMutation.mutate(product);
   };
 
   return (
     <div className={styles.modalBackdrop}>
       <div className={styles.modal}>
-        <h2>ایجاد محصول جدید</h2>
-        <form
-          onSubmit={handleSubmit(addProductHandler)}
-          className={styles.form}>
+        <h2>{mode === "edit" ? "ویرایش محصول" : "ایجاد محصول جدید"}</h2>
+        <form onSubmit={handleSubmit(submitHandler)} className={styles.form}>
           <label htmlFor="name">نام کالا</label>
           <input
             type="text"
@@ -72,8 +74,10 @@ function AddProduct({ setShowAddModal }) {
           />
           <p className={styles.error}>{errors.price?.message || " "}</p>
           <div className={styles.buttons}>
-            <button type="submit">ایجاد</button>
-            <button type="button" onClick={cancelHandler}>
+            <button type="submit">
+              {mode === "edit" ? "ذخیره تغییرات" : "ایجاد"}
+            </button>
+            <button type="button" onClick={onClose}>
               انصراف
             </button>
           </div>
@@ -83,4 +87,4 @@ function AddProduct({ setShowAddModal }) {
   );
 }
 
-export default AddProduct;
+export default ProductForm;

@@ -6,11 +6,12 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Modal from "./Modal";
-import AddProduct from "./AddProduct";
+import ProductForm from "./ProductForm";
 
 function ProductTable() {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -54,7 +55,9 @@ function ProductTable() {
           <h2>مدیریت کالا</h2>
         </div>
         <button onClick={() => setShowAddModal(true)}>افزودن محصول</button>
-        {showAddModal && <AddProduct setShowAddModal={setShowAddModal} />}
+        {showAddModal && (
+          <ProductForm mode="add" onClose={() => setShowAddModal(false)} />
+        )}
       </div>
       <table className={styles.table}>
         <thead>
@@ -74,7 +77,13 @@ function ProductTable() {
               <td>{product.price}</td>
               <td>{product.id.split("-").pop()}</td>
               <td className={styles.btns}>
-                <FiEdit className={styles.editBtn} />
+                <FiEdit
+                  className={styles.editBtn}
+                  onClick={() => {
+                    setSelectedProduct(product);
+                    setShowEditModal(true);
+                  }}
+                />
                 <FiTrash2
                   className={styles.delBtn}
                   onClick={() => {
@@ -89,6 +98,13 @@ function ProductTable() {
       </table>
       {showModal && (
         <Modal confirmHandler={confirmHandler} cancelHandler={cancelHandler} />
+      )}
+      {showEditModal && selectedProduct && (
+        <ProductForm
+          mode="edit"
+          onClose={() => setShowEditModal(false)}
+          initialData={selectedProduct}
+        />
       )}
     </div>
   );

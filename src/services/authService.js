@@ -37,4 +37,20 @@ const addProduct = async (data) => {
   return response.data;
 };
 
-export { loginUser, registerUser, getProducts, deleteProduct, addProduct };
+const updateProduct = async (id, data) => {
+  const response = await dataApi.put(`/products/${id}`, data.data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  return response.data;
+};
+
+export {
+  loginUser,
+  registerUser,
+  getProducts,
+  deleteProduct,
+  addProduct,
+  updateProduct,
+};
