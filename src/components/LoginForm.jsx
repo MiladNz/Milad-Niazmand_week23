@@ -39,9 +39,9 @@ function LoginForm() {
       className={styles.formContainer}
       onSubmit={handleSubmit(loginHandler)}>
       <input type="text" {...register("username")} placeholder="نام کاربری" />
-      {errors.username && <p>{errors.username.message}</p>}
+      <p className={styles.error}>{errors.username?.message || " "}</p>
       <input type="password" {...register("password")} placeholder="رمز عبور" />
-      {errors.password && <p>{errors.password.message}</p>}
+      <p className={styles.error}>{errors.password?.message || " "}</p>
       <button
         type="submit"
         disabled={mutation.isPending}

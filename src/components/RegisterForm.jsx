@@ -38,15 +38,15 @@ function RegisterForm() {
       className={styles.formContainer}
       onSubmit={handleSubmit(registerHandler)}>
       <input type="text" {...register("username")} placeholder="نام کاربری" />
-      {errors.username && <p>{errors.username.message}</p>}
+      <p className={styles.error}>{errors.username?.message || " "}</p>
       <input type="password" {...register("password")} placeholder="رمز عبور" />
-      {errors.password && <p>{errors.password.message}</p>}
+      <p className={styles.error}>{errors.password?.message || " "}</p>
       <input
         type="password"
         {...register("repeatPassword")}
         placeholder="تکرار رمز عبور"
       />
-      {errors.repeatPassword && <p>{errors.repeatPassword.message}</p>}
+      <p className={styles.error}>{errors.repeatPassword?.message || " "}</p>
       <button type="submit" disabled={mutation.isPending}>
         {mutation.isPending ? "در حال ثبت نام ..." : "ثبت نام"}
       </button>
