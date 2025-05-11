@@ -28,4 +28,14 @@ const deleteProduct = async (id) => {
   return response.data;
 };
 
-export { loginUser, registerUser, getProducts, deleteProduct };
+const addProduct = async (data) => {
+  const response = await dataApi.post("/products", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+    data,
+  });
+  return response.data;
+};
+
+export { loginUser, registerUser, getProducts, deleteProduct, addProduct };

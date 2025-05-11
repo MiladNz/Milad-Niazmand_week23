@@ -6,9 +6,11 @@ import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import Modal from "./Modal";
+import AddProduct from "./AddProduct";
 
 function ProductTable() {
   const [showModal, setShowModal] = useState(false);
+  const [showAddModal, setShowAddModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -19,9 +21,9 @@ function ProductTable() {
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
-    mutationFn: deleteProduct,
-    onSuccess: () => {
-      toast.success("محصول مورد نظر با موفقیت حذف شد");
+    mutationFn: (product) => deleteProduct(product.id),
+    onSuccess: (_, product) => {
+      toast.success(`کالای ${product.name} با موفقیت حذف شد`);
       queryClient.invalidateQueries(["products"]);
     },
     onError: () => {
@@ -51,7 +53,8 @@ function ProductTable() {
           </span>
           <h2>مدیریت کالا</h2>
         </div>
-        <button>افزودن محصول</button>
+        <button onClick={() => setShowAddModal(true)}>افزودن محصول</button>
+        {showAddModal && <AddProduct setShowAddModal={setShowAddModal} />}
       </div>
       <table className={styles.table}>
         <thead>
@@ -75,9 +78,8 @@ function ProductTable() {
                 <FiTrash2
                   className={styles.delBtn}
                   onClick={() => {
-                    setSelectedProduct(product.id);
+                    setSelectedProduct(product);
                     setShowModal(true);
-                    // deleteHandler(product.id);
                   }}
                 />
               </td>
