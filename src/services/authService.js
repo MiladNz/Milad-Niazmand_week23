@@ -37,8 +37,8 @@ const addProduct = async (data) => {
   return response.data;
 };
 
-const updateProduct = async (id, data) => {
-  const response = await dataApi.put(`/products/${id}`, data.data, {
+const updateProduct = async ({ id, data }) => {
+  const response = await dataApi.put(`/products/${id}`, data, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },

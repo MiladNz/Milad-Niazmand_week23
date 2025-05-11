@@ -28,7 +28,7 @@ function ProductForm({ onClose, mode = "add", initialData = null }) {
     onSuccess: () => {
       toast.success(
         mode === "edit"
-          ? "محصول با موفقیت ویرایش شد"
+          ? "اطلاعات محصول با موفقیت ویرایش شد"
           : "محصول جدید با موفقیت اضافه شد"
       );
       queryClient.invalidateQueries(["products"]);
@@ -41,7 +41,16 @@ function ProductForm({ onClose, mode = "add", initialData = null }) {
 
   const submitHandler = (data) => {
     const product = mode === "add" ? { ...data, id: uuidv4() } : data;
-    productMutation.mutate(product);
+    if (mode === "add") productMutation.mutate(product);
+    if (mode === "edit")
+      productMutation.mutate({
+        id: product.id,
+        data: {
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+        },
+      });
   };
 
   return (
