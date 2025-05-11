@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 import styles from "./Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
 
-function Searchbar() {
+function Searchbar({ searchHandler }) {
   const savedToken = localStorage.getItem("token");
   let username = "";
 
@@ -11,13 +11,22 @@ function Searchbar() {
     username = decoded.username;
   }
 
+  const inputHandler = (e) => {
+    searchHandler(e.target.value);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.searchContainer}>
         <span>
           <CiSearch />
         </span>
-        <input type="text" name="" id="search" placeholder="جستجوی کالا" />
+        <input
+          type="text"
+          id="search"
+          placeholder="جستجوی کالا"
+          onChange={inputHandler}
+        />
       </div>
       <div className={styles.profile}>
         <img src="/user.png" alt="user-image" />

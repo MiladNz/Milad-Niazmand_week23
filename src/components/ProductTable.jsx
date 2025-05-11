@@ -8,7 +8,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
 
-function ProductTable() {
+function ProductTable({ search }) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -42,6 +42,10 @@ function ProductTable() {
     setSelectedProduct(null);
   };
 
+  const filteredProducts = data?.data?.filter((product) =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   if (isLoading) return <p>در حال بارگذاری ...</p>;
   if (isError) return <p>بروز خطا در دریافت لیست محصولات : {error.message}</p>;
 
@@ -70,7 +74,7 @@ function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {data.data.map((product) => (
+          {filteredProducts.map((product) => (
             <tr key={product.id}>
               <td>{product.name}</td>
               <td>{product.quantity}</td>
