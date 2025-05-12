@@ -3,16 +3,24 @@ import styles from "./Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
 import { useProductContext } from "../context/ProductContext";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import useDebounce from "../hooks/useDebounce";
+import { useEffect } from "react";
 
 function Searchbar() {
   const { setSearch } = useProductContext();
-
+  const [searchInput, setSearchInput] = useState("");
   const [showProfile, setShowProfile] = useState(false);
 
   const savedToken = localStorage.getItem("token");
 
   const logoutNavigate = useNavigate();
+
+  const debounceSearch = useDebounce(searchInput, 1000);
+
+  useEffect(() => {
+    setSearch(debounceSearch);
+  }, [debounceSearch, setSearch]);
 
   let username = "";
 
@@ -22,7 +30,7 @@ function Searchbar() {
   }
 
   const inputHandler = (e) => {
-    setSearch(e.target.value);
+    setSearchInput(e.target.value);
   };
 
   const dropdownHandler = () => {
