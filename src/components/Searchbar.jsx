@@ -1,9 +1,13 @@
 import { CiSearch } from "react-icons/ci";
 import styles from "./Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
+import { useProductContext } from "../context/ProductContext";
 
-function Searchbar({ searchHandler }) {
+function Searchbar() {
+  const { setSearch } = useProductContext();
+
   const savedToken = localStorage.getItem("token");
+
   let username = "";
 
   if (savedToken) {
@@ -12,7 +16,7 @@ function Searchbar({ searchHandler }) {
   }
 
   const inputHandler = (e) => {
-    searchHandler(e.target.value);
+    setSearch(e.target.value);
   };
 
   return (
