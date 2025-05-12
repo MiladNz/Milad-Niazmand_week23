@@ -4,7 +4,7 @@ const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [page, setPage] = useState(1);
-  const [limitPerPage, setlimitPerPage] = useState(10);
+  const [limit, setLimit] = useState(10);
   const [search, setSearch] = useState("");
   const [total, setTotal] = useState(0);
 
@@ -13,8 +13,8 @@ export const ProductProvider = ({ children }) => {
       value={{
         page,
         setPage,
-        limitPerPage,
-        setlimitPerPage,
+        limit,
+        setLimit,
         search,
         setSearch,
         total,

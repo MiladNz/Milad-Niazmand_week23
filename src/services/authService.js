@@ -10,8 +10,22 @@ const registerUser = async (data) => {
   return response.data;
 };
 
-const getProducts = async () => {
+// const getProducts = async () => {
+//   const response = await dataApi.get("/products", {
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("token")}`,
+//     },
+//   });
+//   return response.data;
+// };
+
+const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
   const response = await dataApi.get("/products", {
+    params: {
+      page,
+      limit,
+      search,
+    },
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },

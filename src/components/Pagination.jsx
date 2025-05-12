@@ -2,11 +2,11 @@ import styles from "./Pagination.module.css";
 import { useProductContext } from "../context/ProductContext";
 
 function Pagination() {
-  const { page, setPage, total, limitPerPage } = useProductContext();
+  const { page, setPage, total, limit } = useProductContext();
 
-  const pages = Math.ceil(total / limitPerPage);
+  const pages = Math.ceil(total / limit);
 
-  console.log("total:", total, "limit:", limitPerPage, "pages:", pages);
+  console.log("total:", total, "limit:", limit, "pages:", pages);
 
   return (
     <div className={styles.container}>

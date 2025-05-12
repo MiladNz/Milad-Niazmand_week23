@@ -10,15 +10,15 @@ import ProductForm from "./ProductForm";
 import { useProductContext } from "../context/ProductContext";
 
 function ProductTable() {
-  const { search, page, limitPerPage, setTotal } = useProductContext();
+  const { search, page, limit, setTotal } = useProductContext();
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
+    queryKey: ["products", page, limit, search],
+    queryFn: () => getProducts({ page, limit, search }),
   });
 
   const queryClient = useQueryClient();
@@ -44,21 +44,13 @@ function ProductTable() {
     setSelectedProduct(null);
   };
 
-  const filteredProducts = data?.data?.filter((product) =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  );
-
   useEffect(() => {
-    if (filteredProducts) {
-      setTotal(filteredProducts.length);
-    } else {
-      setTotal(data?.data?.length || 0);
+    if (data?.totalProducts) {
+      setTotal(data.totalProducts);
     }
-  }, [filteredProducts, setTotal, data]);
+  }, [data, setTotal]);
 
-  const paginationProducts = Array.isArray(filteredProducts)
-    ? filteredProducts.slice((page - 1) * limitPerPage, page * limitPerPage)
-    : [];
+  const paginationProducts = data?.data || [];
 
   if (isLoading) return <p>در حال بارگذاری ...</p>;
   if (isError) return <p>بروز خطا در دریافت لیست محصولات : {error.message}</p>;
