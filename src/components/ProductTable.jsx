@@ -4,11 +4,13 @@ import styles from "./ProductTable.module.css";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
+import { useProductContext } from "../context/ProductContext";
 
-function ProductTable({ search, page }) {
+function ProductTable() {
+  const { search, page, limitPerPage, setTotal } = useProductContext();
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -42,14 +44,21 @@ function ProductTable({ search, page }) {
     setSelectedProduct(null);
   };
 
-  const limitPerPage = 10;
   const filteredProducts = data?.data?.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
   );
-  const paginationProducts = filteredProducts.slice(
-    (page - 1) * limitPerPage,
-    page * limitPerPage
-  );
+
+  useEffect(() => {
+    if (filteredProducts) {
+      setTotal(filteredProducts.length);
+    } else {
+      setTotal(data?.data?.length || 0);
+    }
+  }, [filteredProducts, setTotal, data]);
+
+  const paginationProducts = Array.isArray(filteredProducts)
+    ? filteredProducts.slice((page - 1) * limitPerPage, page * limitPerPage)
+    : [];
 
   if (isLoading) return <p>در حال بارگذاری ...</p>;
   if (isError) return <p>بروز خطا در دریافت لیست محصولات : {error.message}</p>;

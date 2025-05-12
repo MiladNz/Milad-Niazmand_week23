@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ProductTable from "../components/ProductTable";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";

@@ -12,9 +12,13 @@
   height: 35px;
   border-radius: 50%;
   border: none;
-  background-color: #55a3f0;
+  color: #8d8d8d;
   font-size: 1.6rem;
-  color: #fff;
   font-family: inherit;
   cursor: pointer;
+}
+
+button.active {
+  background-color: #55a3f0;
+  color: #fff;
 }
