@@ -2,10 +2,10 @@ import { useState } from "react";
 import ProductTable from "../components/ProductTable";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
+import { useProductContext } from "../context/ProductContext";
 
 function AdminPage() {
-  const [search, setSearch] = useState("");
-  const [page, setPage] = useState(1);
+  const { search, setSearch, page, setPage } = useProductContext();
 
   return (
     // ! create style file
