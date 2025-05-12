@@ -8,7 +8,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
 
-function ProductTable({ search }) {
+function ProductTable({ search, page }) {
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -42,8 +42,13 @@ function ProductTable({ search }) {
     setSelectedProduct(null);
   };
 
+  const limitPerPage = 10;
   const filteredProducts = data?.data?.filter((product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
+  );
+  const paginationProducts = filteredProducts.slice(
+    (page - 1) * limitPerPage,
+    page * limitPerPage
   );
 
   if (isLoading) return <p>در حال بارگذاری ...</p>;
@@ -74,7 +79,7 @@ function ProductTable({ search }) {
           </tr>
         </thead>
         <tbody>
-          {filteredProducts.map((product) => (
+          {paginationProducts.map((product) => (
             <tr key={product.id}>
               <td>{product.name}</td>
               <td>{product.quantity}</td>

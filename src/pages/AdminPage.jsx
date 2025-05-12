@@ -11,7 +11,7 @@ function AdminPage() {
     // ! create style file
     <div style={{ maxWidth: "1140px" }}>
       <Searchbar searchHandler={(value) => setSearch(value)} />
-      <ProductTable search={search} />
+      <ProductTable search={search} page={page} />
       <Pagination page={page} setPage={setPage} />
     </div>
   );
