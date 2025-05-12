@@ -13,7 +13,7 @@ function Pagination() {
           key={num}
           className={page === num + 1 ? styles.active : ""}
           onClick={() => setPage(num + 1)}>
-          {num + 1}
+          {(num + 1).toLocaleString("fa")}
         </button>
       ))}
     </div>
