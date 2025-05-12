@@ -24,7 +24,7 @@ const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
     params: {
       page,
       limit,
-      search,
+      name: search,
     },
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,

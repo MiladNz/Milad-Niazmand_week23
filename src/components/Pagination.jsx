@@ -6,8 +6,6 @@ function Pagination() {
 
   const pages = Math.ceil(total / limit);
 
-  console.log("total:", total, "limit:", limit, "pages:", pages);
-
   return (
     <div className={styles.container}>
       {[...Array(pages).keys()].map((num) => (
