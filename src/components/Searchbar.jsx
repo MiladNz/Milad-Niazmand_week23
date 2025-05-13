@@ -33,7 +33,6 @@ function Searchbar({ onSearchChange }) {
     const value = e.target.value;
     setSearchInput(value);
     onSearchChange(value);
-    // setSearchInput(e.target.value);
   };
 
   const dropdownHandler = () => {
