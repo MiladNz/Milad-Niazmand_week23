@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import useDebounce from "../hooks/useDebounce";
 import { useEffect } from "react";
 
-function Searchbar() {
+function Searchbar({ onSearchChange }) {
   const { setSearch } = useProductContext();
   const [searchInput, setSearchInput] = useState("");
   const [showProfile, setShowProfile] = useState(false);
@@ -30,7 +30,10 @@ function Searchbar() {
   }
 
   const inputHandler = (e) => {
-    setSearchInput(e.target.value);
+    const value = e.target.value;
+    setSearchInput(value);
+    onSearchChange(value);
+    // setSearchInput(e.target.value);
   };
 
   const dropdownHandler = () => {

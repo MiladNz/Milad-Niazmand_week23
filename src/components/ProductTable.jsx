@@ -11,8 +11,8 @@ import { useProductContext } from "../context/ProductContext";
 import { ThreeDots } from "react-loader-spinner";
 import { MdErrorOutline } from "react-icons/md";
 
-function ProductTable() {
-  const { search, page, limit, setTotal } = useProductContext();
+function ProductTable({ search }) {
+  const { page, limit, setTotal } = useProductContext();
   const [showModal, setShowModal] = useState(false);
   const [showAddModal, setShowAddModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -21,6 +21,7 @@ function ProductTable() {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products", page, limit, search],
     queryFn: () => getProducts({ page, limit, search }),
+    keepPreviousData: true,
   });
 
   const queryClient = useQueryClient();
