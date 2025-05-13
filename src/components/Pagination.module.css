@@ -22,3 +22,40 @@ button.active {
   background-color: #55a3f0;
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .container {
+    gap: 5px;
+    margin: 15px auto 50px;
+  }
+  .container button {
+    width: 30px;
+    height: 30px;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    gap: 3px;
+    margin: 10px auto 40px;
+  }
+  .container button {
+    width: 28px;
+    height: 28px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    flex-wrap: wrap;
+    margin: 8px auto 30px;
+  }
+
+  .container button {
+    width: 26px;
+    height: 26px;
+    font-size: 1rem;
+  }
+}
