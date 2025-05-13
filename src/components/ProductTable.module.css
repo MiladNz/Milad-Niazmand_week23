@@ -1,5 +1,4 @@
 .mainContainer {
-  /* width: 1140px; */
   margin: 5.5rem auto 0;
   padding: 1rem;
   color: #282828;
@@ -80,6 +79,7 @@
   text-align: right;
   padding: 1rem 4rem;
   background-color: #fff;
+  white-space: nowrap;
 }
 
 .btns {
@@ -131,4 +131,91 @@
 .errorMsg p {
   font-size: 2rem;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .header > button {
+    font-size: 1.4rem;
+  }
+  .table thead th {
+    padding: 1.5rem 2.5rem;
+    font-size: 1.3rem;
+  }
+  .table tbody {
+    height: 350px;
+  }
+  .table tbody td {
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+  }
+  .table tbody td span {
+    font-size: 1.1rem;
+  }
+  .btns {
+    gap: 5px;
+  }
+  .editBtn,
+  .delBtn {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 540px) {
+  .table thead tr th:nth-of-type(4),
+  .table tbody tr td:nth-of-type(4) {
+    display: none;
+  }
+  .table thead th:nth-of-type(2),
+  .table tbody td:nth-of-type(2) {
+    text-align: center;
+  }
+}
+
+@media (max-width: 425px) {
+  .header {
+    padding: 1rem;
+  }
+  .title h2 {
+    font-size: 2rem;
+  }
+  .header > button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
+  .table thead th {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+  }
+  .table tbody {
+    height: 300px;
+  }
+  .table tbody td {
+    font-size: 1.1rem;
+    padding: 0.8rem 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .title h2 {
+    font-size: 1.8rem;
+  }
+  .header > button {
+    font-size: 1.1rem;
+    padding: 0.6rem 0.9rem;
+  }
+  .table thead th {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+  .table tbody {
+    height: 250px;
+  }
+  .table tbody td {
+    font-size: 1.1rem;
+    padding: 0.6rem 1.5rem;
+  }
+  .editBtn,
+  .delBtn {
+    font-size: 16px;
+  }
 }
