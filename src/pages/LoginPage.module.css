@@ -25,3 +25,56 @@
   font-weight: 600;
   margin-bottom: 4rem;
 }
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+    padding: 4rem 2.5rem 1.5rem 2.5rem;
+  }
+
+  .container img {
+    width: 70px;
+    margin-bottom: 1.5rem;
+  }
+
+  .container h2 {
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .container {
+    width: 85%;
+    padding: 3rem 2rem 1.5rem 2rem;
+    border-radius: 20px;
+  }
+
+  .container img {
+    width: 60px;
+    margin-bottom: 1rem;
+  }
+
+  .container h2 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    width: 80%;
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    border-radius: 15px;
+  }
+
+  .container img {
+    width: 50px;
+    margin-bottom: 0.8rem;
+  }
+
+  .container h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
