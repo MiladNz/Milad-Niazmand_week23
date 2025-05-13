@@ -16,7 +16,7 @@ function Searchbar({ onSearchChange }) {
 
   const logoutNavigate = useNavigate();
 
-  const debounceSearch = useDebounce(searchInput, 500);
+  const debounceSearch = useDebounce(searchInput, 700);
 
   useEffect(() => {
     setSearch(debounceSearch);

@@ -21,6 +21,7 @@ function ProductTable({ search }) {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products", page, limit, search],
     queryFn: () => getProducts({ page, limit, search }),
+    retry: false,
     keepPreviousData: true,
   });
 
