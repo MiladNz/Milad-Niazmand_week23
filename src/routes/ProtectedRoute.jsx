@@ -1,5 +1,4 @@
 import { Navigate } from "react-router-dom";
-import LoginForm from "../components/LoginForm";
 
 function ProtectedRoute({ children }) {
   const savedToken = localStorage.getItem("token");

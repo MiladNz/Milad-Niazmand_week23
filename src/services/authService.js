@@ -1,4 +1,3 @@
-import { data } from "react-router-dom";
 import dataApi from "./dataApi";
 
 const loginUser = async (data) => {
@@ -10,15 +9,6 @@ const registerUser = async (data) => {
   const response = await dataApi.post("/auth/register", data);
   return response.data;
 };
-
-// const getProducts = async () => {
-//   const response = await dataApi.get("/products", {
-//     headers: {
-//       Authorization: `Bearer ${localStorage.getItem("token")}`,
-//     },
-//   });
-//   return response.data;
-// };
 
 const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
   try {
