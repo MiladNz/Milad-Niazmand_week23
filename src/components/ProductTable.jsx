@@ -20,7 +20,7 @@ function ProductTable() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["products", page, limit, search],
-    queryFn: () => getProductss({ page, limit, search }),
+    queryFn: () => getProducts({ page, limit, search }),
   });
 
   const queryClient = useQueryClient();
@@ -52,9 +52,7 @@ function ProductTable() {
     }
   }, [data, setTotal]);
 
-  const paginationProducts = data?.data || [];
-
-  if (isError)
+  if (isError && data)
     return (
       <div className={styles.errorMsg}>
         <span>
@@ -70,6 +68,8 @@ function ProductTable() {
         <ThreeDots color="#55a3f0" />
       </div>
     );
+
+  const paginationProducts = data?.data || [];
 
   return (
     <div className={styles.mainContainer}>
@@ -96,30 +96,38 @@ function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {paginationProducts.map((product) => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>{product.quantity}</td>
-              <td>{product.price}</td>
-              <td>{product.id.split("-").pop()}</td>
-              <td className={styles.btns}>
-                <FiEdit
-                  className={styles.editBtn}
-                  onClick={() => {
-                    setSelectedProduct(product);
-                    setShowEditModal(true);
-                  }}
-                />
-                <FiTrash2
-                  className={styles.delBtn}
-                  onClick={() => {
-                    setSelectedProduct(product);
-                    setShowModal(true);
-                  }}
-                />
+          {paginationProducts.length > 0 ? (
+            paginationProducts.map((product) => (
+              <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>{product.quantity}</td>
+                <td>{product.price}</td>
+                <td>{product.id.split("-").pop()}</td>
+                <td className={styles.btns}>
+                  <FiEdit
+                    className={styles.editBtn}
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setShowEditModal(true);
+                    }}
+                  />
+                  <FiTrash2
+                    className={styles.delBtn}
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setShowModal(true);
+                    }}
+                  />
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5" style={{ textAlign: "center", padding: "2rem" }}>
+                کالایی با این مشخصات پیدا نشد
               </td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
       {showModal && (

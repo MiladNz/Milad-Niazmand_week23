@@ -1,3 +1,4 @@
+import { data } from "react-router-dom";
 import dataApi from "./dataApi";
 
 const loginUser = async (data) => {
@@ -20,17 +21,24 @@ const registerUser = async (data) => {
 // };
 
 const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
-  const response = await dataApi.get("/products", {
-    params: {
-      page,
-      limit,
-      name: search,
-    },
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-  return response.data;
+  try {
+    const response = await dataApi.get("/products", {
+      params: {
+        page,
+        limit,
+        name: search,
+      },
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response?.status === 404) {
+      return { data: [], totalProducts: 0 };
+    }
+    throw error;
+  }
 };
 
 const deleteProduct = async (id) => {
