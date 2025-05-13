@@ -2,12 +2,17 @@
   text-align: center;
   color: #4e413b;
   font-weight: 500;
-  font-size: 14px;
+  font-size: 1.4rem;
   position: relative;
   bottom: 20px;
-  /* margin-top: 5px; */
 }
 .footer a {
   color: #55a3f0;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    font-size: 1.1rem;
+  }
 }
