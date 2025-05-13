@@ -60,7 +60,7 @@
 
 .table tbody {
   display: block;
-  height: 500px;
+  height: 400px;
   overflow-y: auto;
   width: 100%;
   background-color: #fff;
