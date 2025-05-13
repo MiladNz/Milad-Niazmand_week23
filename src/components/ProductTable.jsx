@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
 import { useProductContext } from "../context/ProductContext";
+import { ThreeDots } from "react-loader-spinner";
+import { MdErrorOutline } from "react-icons/md";
 
 function ProductTable() {
   const { search, page, limit, setTotal } = useProductContext();
@@ -16,9 +18,9 @@ function ProductTable() {
   const [showEditModal, setShowEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["products", page, limit, search],
-    queryFn: () => getProducts({ page, limit, search }),
+    queryFn: () => getProductss({ page, limit, search }),
   });
 
   const queryClient = useQueryClient();
@@ -52,8 +54,22 @@ function ProductTable() {
 
   const paginationProducts = data?.data || [];
 
-  if (isLoading) return <p>در حال بارگذاری ...</p>;
-  if (isError) return <p>بروز خطا در دریافت لیست محصولات : {error.message}</p>;
+  if (isError)
+    return (
+      <div className={styles.errorMsg}>
+        <span>
+          <MdErrorOutline />
+        </span>
+        <p>بروز خطا در دریافت لیست محصولات </p>
+      </div>
+    );
+
+  if (isLoading)
+    return (
+      <div className={styles.loader}>
+        <ThreeDots color="#55a3f0" />
+      </div>
+    );
 
   return (
     <div className={styles.mainContainer}>

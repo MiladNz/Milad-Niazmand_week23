@@ -100,3 +100,35 @@
   font-size: 20px;
   cursor: pointer;
 }
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+}
+
+.errorMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  min-width: fit-content;
+  margin: 6rem auto;
+  height: 150px;
+  color: #f43f5e;
+}
+
+.errorMsg span {
+  font-size: 4rem;
+  height: 40px;
+}
+
+.errorMsg p {
+  font-size: 2rem;
+  font-weight: 700;
+}
