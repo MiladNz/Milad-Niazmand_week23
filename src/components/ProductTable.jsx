@@ -102,8 +102,8 @@ function ProductTable({ search }) {
             paginationProducts.map((product) => (
               <tr key={product.id}>
                 <td>{product.name}</td>
-                <td>{product.quantity}</td>
-                <td>{product.price}</td>
+                <td>{product.quantity.toLocaleString("fa")}</td>
+                <td>{product.price.toLocaleString("fa") + " تومان"}</td>
                 <td>{product.id.split("-").pop()}</td>
                 <td className={styles.btns}>
                   <FiEdit
