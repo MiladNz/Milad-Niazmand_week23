@@ -47,3 +47,56 @@
   background-color: #f43f5e;
   color: #fff;
 }
+
+@media (max-width: 768px) {
+  .modal {
+    height: auto;
+    padding: 1.5rem 2rem;
+    border-radius: 25px;
+  }
+  .modal img {
+    transform: scale(0.9);
+  }
+  .modal p {
+    font-size: 1.8rem;
+  }
+  .modal button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  .modal {
+    width: 85%;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+  }
+  .modal img {
+    transform: scale(0.7);
+  }
+  .modal p {
+    font-size: 1.6rem;
+  }
+  .modal button {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .modal {
+    width: 80%;
+    padding: 0.8rem 1rem;
+    border-radius: 15px;
+  }
+  .modal img {
+    transform: scale(0.6);
+  }
+  .modal p {
+    font-size: 1.4rem;
+  }
+  .modal button {
+    font-size: 1.2rem;
+    padding: 0.8rem 1rem;
+  }
+}
