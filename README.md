@@ -1,12 +1,81 @@
-# React + Vite
+# Admin Panel
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a **React-based Admin Panel** for managing an online store’s product inventory. The panel allows administrators to **add**, **edit**, **delete**, and **search** products with full **pagination** and **form validation** support. This project uses a **RESTful API** built separately to manage backend data and login/logout authentication.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Login/Logout authentication flow (JWT-based)
+- Product list with pagination
+- Real-time debounced product search
+- Add product (with validation)
+- Edit product (reusable form component)
+- Delete product with confirmation modal
+- Form validation using `yup` + `react-hook-form`
+- API state management with `react-query`
+- Clean and modern UI using CSS Modules
+- Dynamic UI updates after any change
+- Persian (Farsi) based
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Category      | Tech                             |
+| ------------- | -------------------------------- |
+| Frontend      | React, React Router, CSS Modules |
+| Forms         | React Hook Form, Yup             |
+| State Mgmt    | React Context, React Query       |
+| API Requests  | Axios                            |
+| Icons         | React Icons                      |
+| Notifications | React Toastify                   |
+| Unique IDs    | UUID                             |
+| Debounce      | Custom hook `useDebounce`        |
+
+## Project Structure
+
+```
+src/
+│
+├── components/         # Reusable components (Form, Table, Searchbar, Modal, etc.)
+├── context/            # ProductContext (for managing search, pagination)
+├── hooks/              # Custom hooks (e.g. useDebounce)
+├── pages/              # Page-level components (e.g. AdminPage, LoginPage)
+├── schema/             # Yup validation schemas
+├── services/           # API calls via Axios
+└── App.jsx             # Main app & routing
+
+```
+
+## Authentication
+
+- User logs in with a username and password
+- On successful login, a JWT token is stored in `localStorage`
+- Protected routes check for the presence of the token
+- Logout removes the token and redirects the user
+
+## API Specs
+
+The frontend expects the backend to return paginated product data with this shape:
+
+```json
+{
+  "totalProducts": 42,
+  "page": 1,
+  "limit": 10,
+  "totalPages": 5,
+  "data": [
+    {
+      "id": "uuid",
+      "name": "Product Name",
+      "price": 10000,
+      "quantity": 3
+    }
+  ]
+}
+```
+
+## License
+
+This project is open-source and free to use under the [MIT License](LICENSE).
+
+## Developer
+
+This project is built and maintained By **MiladNz**.
