@@ -1,6 +1,6 @@
 # Admin Panel
 
-This is a **React-based Admin Panel** for managing an online store’s product inventory. The panel allows administrators to **add**, **edit**, **delete**, and **search** products with full **pagination** and **form validation** support. This project uses a **RESTful API** built separately to manage backend data and login/logout authentication.
+This is a **React-based Admin Panel** for managing an online store’s product inventory with **responsive design**. The panel allows administrators to **add**, **edit**, **delete**, and **search** products with full **pagination** and **form validation** support. This project uses a **RESTful API** built separately to manage backend data and login/logout authentication.
 
 ## Features
 
@@ -14,6 +14,7 @@ This is a **React-based Admin Panel** for managing an online store’s product i
 - API state management with `react-query`
 - Clean and modern UI using CSS Modules
 - Dynamic UI updates after any change
+- Responsive Design
 - Persian (Farsi) based
 
 ## Tech Stack
