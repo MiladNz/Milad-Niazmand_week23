@@ -46,7 +46,7 @@ src/
 
 ## Authentication
 
-- User logs in with a username and password
+- User logs in with a username and password.
 - On successful login, a JWT token is stored in `localStorage`
 - Protected routes check for the presence of the token
 - Logout removes the token and redirects the user
