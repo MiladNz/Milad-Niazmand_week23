@@ -4,7 +4,7 @@ import loginSchema from "../src/schema/loginSchema";
 import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../src/services/authService";
 import { toast } from "react-toastify";
-import styles from "./LoginForm.module.css";
+import styles from "../styles/LoginForm.module.css";
 // import { Link, useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import Link from "next/link";

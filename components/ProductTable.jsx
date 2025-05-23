@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { deleteProduct, getProducts } from "../services/authService";
-import styles from "./ProductTable.module.css";
+import styles from "../styles/ProductTable.module.css";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { toast } from "react-toastify";

@@ -1,4 +1,4 @@
-import styles from "./Pagination.module.css";
+import styles from "../styles/Pagination.module.css";
 import { useProductContext } from "../context/ProductContext";
 
 function Pagination() {

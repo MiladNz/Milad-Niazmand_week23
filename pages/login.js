@@ -1,6 +1,6 @@
 import Image from "next/image";
 import LoginForm from "../components/LoginForm";
-import styles from "./LoginPage.module.css";
+import styles from "../styles/LoginPage.module.css";
 
 function LoginPage() {
   return (

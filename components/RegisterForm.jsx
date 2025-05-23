@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 // import { Link, useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import styles from "./LoginForm.module.css";
+import styles from "../styles/LoginForm.module.css";
 
 function RegisterForm() {
   const {

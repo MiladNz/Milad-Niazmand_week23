@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import styles from "./ProductForm.module.css";
+import styles from "../styles/ProductForm.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import newProductSchema from "../schema/newProductSchema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";

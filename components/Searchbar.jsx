@@ -1,5 +1,5 @@
 import { CiLogout, CiSearch } from "react-icons/ci";
-import styles from "./Searchbar.module.css";
+import styles from "../styles/Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
 import { useProductContext } from "../context/ProductContext";
 import { useState } from "react";
