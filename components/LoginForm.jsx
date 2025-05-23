@@ -1,8 +1,8 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import loginSchema from "../schema/loginSchema";
+import loginSchema from "../src/schema/loginSchema";
 import { useMutation } from "@tanstack/react-query";
-import { loginUser } from "../services/authService";
+import { loginUser } from "../src/services/authService";
 import { toast } from "react-toastify";
 import styles from "./LoginForm.module.css";
 // import { Link, useNavigate } from "react-router-dom";
