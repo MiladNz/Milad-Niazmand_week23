@@ -2,7 +2,7 @@ import ProductTable from "../components/ProductTable";
 import Searchbar from "../components/Searchbar";
 import Pagination from "../components/Pagination";
 import { useState } from "react";
-import useDebounce from "../hooks/useDebounce";
+import useDebounce from "../src/hooks/useDebounce";
 import Footer from "../components/Footer";
 
 function AdminPage() {
