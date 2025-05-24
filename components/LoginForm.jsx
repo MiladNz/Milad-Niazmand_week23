@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 import { loginUser } from "../src/services/authService";
 import { toast } from "react-toastify";
 import styles from "../styles/LoginForm.module.css";
-// import { Link, useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
@@ -16,7 +15,6 @@ function LoginForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(loginSchema) });
 
-  // const navigate = useNavigate();
   const router = useRouter();
 
   const mutation = useMutation({
@@ -25,7 +23,6 @@ function LoginForm() {
       localStorage.setItem("token", data.token);
       toast.success("ورود با موفقیت انجام شد");
       setTimeout(() => {
-        // navigate("/admin");
         router.push("/dashboard");
       }, 2500);
     },
@@ -53,9 +50,6 @@ function LoginForm() {
         {mutation.isPending ? "در حال ورود ..." : "ورود"}
       </button>
       <p>
-        {/* <Link to="/register" className={styles.registerLink}>
-          ایجاد حساب کاربری
-        </Link> */}
         <Link href="/register" className={styles.registerLink}>
           ایجاد حساب کاربری
         </Link>

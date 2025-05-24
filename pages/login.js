@@ -6,7 +6,6 @@ function LoginPage() {
   return (
     <div className={styles.mainContainer}>
       <div className={styles.container}>
-        {/* <img src="/Union.png" alt="logo" /> */}
         <Image
           src="/Union.png"
           alt="logo"

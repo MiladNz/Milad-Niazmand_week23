@@ -3,7 +3,6 @@ import styles from "../styles/Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
 import { useProductContext } from "../src/context/ProductContext";
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import useDebounce from "../src/hooks/useDebounce";
 import { useEffect } from "react";
@@ -15,9 +14,6 @@ function Searchbar({ onSearchChange }) {
   const [showProfile, setShowProfile] = useState(false);
   const [username, setUsername] = useState("");
 
-  // const savedToken = global?.localStorage?.getItem("token");
-
-  // const logoutNavigate = useNavigate();
   const router = useRouter();
 
   const debounceSearch = useDebounce(searchInput, 700);
@@ -36,13 +32,6 @@ function Searchbar({ onSearchChange }) {
     }
   }, []);
 
-  // let username = "";
-
-  // if (savedToken) {
-  //   const decoded = jwtDecode(savedToken);
-  //   username = decoded.username;
-  // }
-
   const inputHandler = (e) => {
     const value = e.target.value;
     setSearchInput(value);
@@ -56,7 +45,6 @@ function Searchbar({ onSearchChange }) {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setShowProfile(false);
-    // logoutNavigate("/");
     router.push("/login");
   };
 

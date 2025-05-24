@@ -4,7 +4,6 @@ import registerSchema from "../src/schema/registerSchema";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "../src/services/authService";
 import { toast } from "react-toastify";
-// import { Link, useNavigate } from "react-router-dom";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from "../styles/LoginForm.module.css";
@@ -16,7 +15,6 @@ function RegisterForm() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(registerSchema) });
 
-  // const navigate = useNavigate();
   const router = useRouter();
 
   const mutation = useMutation({
@@ -24,7 +22,6 @@ function RegisterForm() {
     onSuccess: () => {
       toast.success("ثبت نام با موفقیت انجام شد");
       setTimeout(() => {
-        // navigate("/");
         router.push("/login");
       }, 2500);
     },
@@ -55,9 +52,6 @@ function RegisterForm() {
         {mutation.isPending ? "در حال ثبت نام ..." : "ثبت نام"}
       </button>
       <p>
-        {/* <Link to="/" className={styles.registerLink}>
-          حساب کاربری دارید؟
-        </Link> */}
         <Link href="/login" className={styles.registerLink}>
           حساب کاربری دارید؟
         </Link>

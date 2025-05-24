@@ -18,9 +18,6 @@ const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
         limit,
         name: search,
       },
-      // headers: {
-      //   Authorization: `Bearer ${localStorage.getItem("token")}`,
-      // },
     });
     return response.data;
   } catch (error) {
@@ -32,40 +29,17 @@ const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
 };
 
 const deleteProduct = async (id) => {
-  const response = await dataApi.delete(
-    `/products/${id}`
-    //   , {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // }
-  );
+  const response = await dataApi.delete(`/products/${id}`);
   return response.data;
 };
 
 const addProduct = async (data) => {
-  const response = await dataApi.post(
-    "/products",
-    data
-    //   {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // }
-  );
+  const response = await dataApi.post("/products", data);
   return response.data;
 };
 
 const updateProduct = async ({ id, data }) => {
-  const response = await dataApi.put(
-    `/products/${id}`,
-    data
-    //   {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // }
-  );
+  const response = await dataApi.put(`/products/${id}`, data);
   return response.data;
 };
 
