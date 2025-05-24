@@ -90,11 +90,8 @@ This is a **Next.js-based Admin Panel** for managing an online store’s product
 │   ├── Pagination.module.css
 │   ├── ProductForm.module.css
 │   ├── ProductTable.module.css
-│   └── Searchbar.module.css
-│
-├── .eslintrc.json
-├── .gitignore
-└── next.config.js
+    └── Searchbar.module.css
+
 
 ```
 
