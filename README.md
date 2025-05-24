@@ -1,6 +1,6 @@
-# Admin Panel
+# Admin Panel (Next.js Pages Router)
 
-This is a **React-based Admin Panel** for managing an online store’s product inventory with **responsive design**. The panel allows administrators to **add**, **edit**, **delete**, and **search** products with full **pagination** and **form validation** support. This project uses a **RESTful API** built separately to manage backend data and login/logout authentication.
+This is a **Next.js-based Admin Panel** for managing an online store’s product inventory with **responsive design**. The panel allows administrators to **add**, **edit**, **delete**, and **search** products with full **pagination** and **form validation** support. This project uses a **RESTful API** built separately to manage backend data and login/logout authentication.
 
 ## Features
 
@@ -10,6 +10,7 @@ This is a **React-based Admin Panel** for managing an online store’s product i
 - Add product (with validation)
 - Edit product (reusable form component)
 - Delete product with confirmation modal
+- Axios Interceptor for Auto Authorization
 - Form validation using `yup` + `react-hook-form`
 - API state management with `react-query`
 - Clean and modern UI using CSS Modules
@@ -19,29 +20,81 @@ This is a **React-based Admin Panel** for managing an online store’s product i
 
 ## Tech Stack
 
-| Category      | Tech                             |
-| ------------- | -------------------------------- |
-| Frontend      | React, React Router, CSS Modules |
-| Forms         | React Hook Form, Yup             |
-| State Mgmt    | React Context, React Query       |
-| API Requests  | Axios                            |
-| Icons         | React Icons                      |
-| Notifications | React Toastify                   |
-| Unique IDs    | UUID                             |
-| Debounce      | Custom hook `useDebounce`        |
+| Category      | Tech                       |
+| ------------- | -------------------------- |
+| Framework     | **Next.js** (App Router)   |
+| Forms         | React Hook Form, Yup       |
+| State Mgmt    | React Context, React Query |
+| API Requests  | Axio + Interceptors        |
+| Icons         | React Icons                |
+| Notifications | React Toastify             |
+| Styling       | CSS Modules                |
+| Unique IDs    | UUID                       |
+| Debounce      | Custom hook `useDebounce`  |
 
 ## Project Structure
 
 ```
-src/
+.
+├── components/
+│   ├── Footer.jsx
+│   ├── LoginForm.jsx
+│   ├── Modal.jsx
+│   ├── Pagination.jsx
+│   ├── ProductForm.jsx
+│   ├── ProductTable.jsx
+│   ├── RegisterForm.jsx
+│   ├── Searchbar.jsx
+│   └── Toast.jsx
 │
-├── components/         # Reusable components (Form, Table, Searchbar, Modal, etc.)
-├── context/            # ProductContext (for managing search, pagination)
-├── hooks/              # Custom hooks (e.g. useDebounce)
-├── pages/              # Page-level components (e.g. AdminPage, LoginPage)
-├── schema/             # Yup validation schemas
-├── services/           # API calls via Axios
-└── App.jsx             # Main app & routing
+├── pages/
+│   ├── api/
+│   ├── _app.js
+│   ├── dashboard.js
+│   ├── index.js
+│   ├── login.js
+│   └── register.js
+│
+├── public/
+│   ├── Close.png
+│   ├── favicon.ico
+│   ├── Union.png
+│   ├── user.png
+│   └── ...
+│
+├── src/
+│   ├── context/
+│   │   └── ProductContext.jsx
+│   │
+│   ├── hooks/
+│   │   └── useDebounce.js
+│   │
+│   ├── routes/
+│   │   └── ProtectedRoute.jsx
+│   │
+│   ├── schema/
+│   │   ├── loginSchema.js
+│   │   ├── newProductSchema.js
+│   │   └── registerSchema.js
+│   │
+│   └── services/
+│       ├── authService.js
+│       └── dataApi.js
+│
+├── styles/
+│   ├── globals.css
+│   ├── Footer.module.css
+│   ├── LoginForm.module.css
+│   ├── LoginPage.module.css
+│   ├── Modal.module.css
+│   ├── Pagination.module.css
+│   ├── ProductForm.module.css
+│   ├── ProductTable.module.css
+│   └── Searchbar.module.css
+│
+├── .eslintrc.json
+├── .gitignore
+└── next.config.js
 
 ```
 

@@ -12,6 +12,7 @@ function LoginPage() {
           alt="logo"
           width={100}
           height={100}
+          priority
           style={{ marginBottom: "2rem" }}
         />
         <h2 style={{ marginBottom: "6rem" }}>فرم ورود</h2>
