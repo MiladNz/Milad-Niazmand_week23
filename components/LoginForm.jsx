@@ -26,7 +26,7 @@ function LoginForm() {
       toast.success("ورود با موفقیت انجام شد");
       setTimeout(() => {
         // navigate("/admin");
-        router.push("/admin");
+        router.push("/dashboard");
       }, 2500);
     },
     onError: () => {
