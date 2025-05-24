@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import Toast from "../components/Toast";
+import { ProductProvider } from "../src/context/ProductContext";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Toast />
-      <Component {...pageProps} />
+      <ProductProvider>
+        <Component {...pageProps} />
+      </ProductProvider>
     </QueryClientProvider>
   );
 }

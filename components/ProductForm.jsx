@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
 import styles from "../styles/ProductForm.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
-import newProductSchema from "../schema/newProductSchema";
+import newProductSchema from "../src/schema/newProductSchema";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { addProduct, updateProduct } from "../services/authService";
+import { addProduct, updateProduct } from "../src/services/authService";
 import { v4 as uuidv4 } from "uuid";
 
 function ProductForm({ onClose, mode = "add", initialData = null }) {

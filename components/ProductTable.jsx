@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { deleteProduct, getProducts } from "../services/authService";
+import { deleteProduct, getProducts } from "../src/services/authService";
 import styles from "../styles/ProductTable.module.css";
 import { AiOutlineProduct } from "react-icons/ai";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
 import ProductForm from "./ProductForm";
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../src/context/ProductContext";
 import { ThreeDots } from "react-loader-spinner";
 import { MdErrorOutline } from "react-icons/md";
 

@@ -1,5 +1,5 @@
 import styles from "../styles/Pagination.module.css";
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../src/context/ProductContext";
 
 function Pagination() {
   const { page, setPage, total, limit } = useProductContext();

@@ -1,10 +1,11 @@
 import { CiLogout, CiSearch } from "react-icons/ci";
 import styles from "../styles/Searchbar.module.css";
 import { jwtDecode } from "jwt-decode";
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../src/context/ProductContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import useDebounce from "../hooks/useDebounce";
+// import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
+import useDebounce from "../src/hooks/useDebounce";
 import { useEffect } from "react";
 
 function Searchbar({ onSearchChange }) {
@@ -12,9 +13,10 @@ function Searchbar({ onSearchChange }) {
   const [searchInput, setSearchInput] = useState("");
   const [showProfile, setShowProfile] = useState(false);
 
-  const savedToken = localStorage.getItem("token");
+  const savedToken = global?.localStorage?.getItem("token");
 
-  const logoutNavigate = useNavigate();
+  // const logoutNavigate = useNavigate();
+  const router = useRouter();
 
   const debounceSearch = useDebounce(searchInput, 700);
 
@@ -42,7 +44,8 @@ function Searchbar({ onSearchChange }) {
   const logoutHandler = () => {
     localStorage.removeItem("token");
     setShowProfile(false);
-    logoutNavigate("/");
+    // logoutNavigate("/");
+    router.push("/login");
   };
 
   return (
