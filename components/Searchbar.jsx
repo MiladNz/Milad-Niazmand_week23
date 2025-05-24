@@ -12,8 +12,9 @@ function Searchbar({ onSearchChange }) {
   const { setSearch } = useProductContext();
   const [searchInput, setSearchInput] = useState("");
   const [showProfile, setShowProfile] = useState(false);
+  const [username, setUsername] = useState("");
 
-  const savedToken = global?.localStorage?.getItem("token");
+  // const savedToken = global?.localStorage?.getItem("token");
 
   // const logoutNavigate = useNavigate();
   const router = useRouter();
@@ -24,12 +25,22 @@ function Searchbar({ onSearchChange }) {
     setSearch(debounceSearch);
   }, [debounceSearch, setSearch]);
 
-  let username = "";
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const savedToken = localStorage.getItem("token");
+      if (savedToken) {
+        const decoded = jwtDecode(savedToken);
+        setUsername(decoded.username);
+      }
+    }
+  }, []);
 
-  if (savedToken) {
-    const decoded = jwtDecode(savedToken);
-    username = decoded.username;
-  }
+  // let username = "";
+
+  // if (savedToken) {
+  //   const decoded = jwtDecode(savedToken);
+  //   username = decoded.username;
+  // }
 
   const inputHandler = (e) => {
     const value = e.target.value;
