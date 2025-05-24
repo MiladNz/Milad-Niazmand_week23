@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import useDebounce from "../src/hooks/useDebounce";
 import { useEffect } from "react";
+import Image from "next/image";
 
 function Searchbar({ onSearchChange }) {
   const { setSearch } = useProductContext();
@@ -73,7 +74,7 @@ function Searchbar({ onSearchChange }) {
         />
       </div>
       <div className={styles.profile} onClick={dropdownHandler}>
-        <img src="/user.png" alt="user-image" />
+        <Image src="/user.png" alt="user-img" width={46} height={46} />
         <div className={styles.profileInfo}>
           <p>{username ? username : ""}</p>
           <p>مدیر</p>
