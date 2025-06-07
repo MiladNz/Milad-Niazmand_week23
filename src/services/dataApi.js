@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie, removeCookie } from "../utils/cookie";
 
 const dataApi = axios.create({
   baseURL: "http://localhost:3000/",
@@ -10,7 +11,7 @@ const dataApi = axios.create({
 dataApi.interceptors.request.use(
   (config) => {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token");
+      const token = getCookie("token");
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -25,7 +26,7 @@ dataApi.interceptors.response.use(
   (error) => {
     if (typeof window !== "undefined" && error.response) {
       if (error.response.status === 401 || error.response.status === 403) {
-        localStorage.removeItem("token");
+        removeCookie("token");
         Router.push("/login");
       }
     }

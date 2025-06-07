@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import styles from "../styles/LoginForm.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { getCookie, removeCookie, setCookie } from "../src/utils/cookie";
+import { setCookie } from "../src/utils/cookie";
 
 function LoginForm() {
   const {
