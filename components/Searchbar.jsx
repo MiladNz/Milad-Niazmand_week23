@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import useDebounce from "../src/hooks/useDebounce";
 import { useEffect } from "react";
 import Image from "next/image";
+import { getCookie, removeCookie } from "../src/utils/cookie";
 
 function Searchbar({ onSearchChange }) {
   const { setSearch } = useProductContext();
@@ -24,7 +25,8 @@ function Searchbar({ onSearchChange }) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const savedToken = localStorage.getItem("token");
+      const savedToken = getCookie("token");
+
       if (savedToken) {
         const decoded = jwtDecode(savedToken);
         setUsername(decoded.username);
@@ -43,7 +45,8 @@ function Searchbar({ onSearchChange }) {
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem("token");
+    // localStorage.removeItem("token");
+    removeCookie("token");
     setShowProfile(false);
     router.push("/login");
   };

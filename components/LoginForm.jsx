@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import styles from "../styles/LoginForm.module.css";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { getCookie, removeCookie, setCookie } from "../src/utils/cookie";
 
 function LoginForm() {
   const {
@@ -20,7 +21,8 @@ function LoginForm() {
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      localStorage.setItem("token", data.token);
+      // localStorage.setItem("token", data.token);
+      setCookie("token", data.token);
       toast.success("ورود با موفقیت انجام شد");
       setTimeout(() => {
         router.push("/dashboard");

@@ -1,7 +1,10 @@
 import dataApi from "./dataApi";
+import { setCookie, getCookie } from "../utils/cookie";
 
 const loginUser = async (data) => {
   const response = await dataApi.post("/auth/login", data);
+  const token = response.data.token;
+  setCookie("token", token);
   return response.data;
 };
 
@@ -12,11 +15,16 @@ const registerUser = async (data) => {
 
 const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
   try {
+    const token = getCookie("token");
     const response = await dataApi.get("/products", {
       params: {
         page,
         limit,
         name: search,
+      },
+      headers: {
+        // Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     return response.data;
@@ -29,17 +37,38 @@ const getProducts = async ({ page = 1, limit = 10, search = "" }) => {
 };
 
 const deleteProduct = async (id) => {
-  const response = await dataApi.delete(`/products/${id}`);
+  const token = getCookie("token");
+
+  const response = await dataApi.delete(`/products/${id}`, {
+    headers: {
+      // Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };
 
 const addProduct = async (data) => {
-  const response = await dataApi.post("/products", data);
+  const token = getCookie("token");
+
+  const response = await dataApi.post("/products", data, {
+    headers: {
+      // Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };
 
 const updateProduct = async ({ id, data }) => {
-  const response = await dataApi.put(`/products/${id}`, data);
+  const token = getCookie("token");
+
+  const response = await dataApi.put(`/products/${id}`, data, {
+    headers: {
+      // Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return response.data;
 };
 
