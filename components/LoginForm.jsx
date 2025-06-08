@@ -21,7 +21,6 @@ function LoginForm() {
   const mutation = useMutation({
     mutationFn: loginUser,
     onSuccess: (data) => {
-      // localStorage.setItem("token", data.token);
       setCookie("token", data.token);
       toast.success("ورود با موفقیت انجام شد");
       setTimeout(() => {

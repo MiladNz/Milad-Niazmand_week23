@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Toast from "../components/Toast";
 import { ProductProvider } from "../src/context/ProductContext";
 import { useRouter } from "next/router";
+import { getCookie } from "../src/utils/cookie";
 
 function MyApp({ Component, pageProps }) {
   const [queryClient] = useState(() => new QueryClient());
@@ -12,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     document.documentElement.setAttribute("dir", "rtl");
 
-    const token = localStorage.getItem("token");
+    const token = getCookie("token");
     const publicRoutes = ["/login", "/register"];
 
     if (!token && !publicRoutes.includes(router.pathname)) {
